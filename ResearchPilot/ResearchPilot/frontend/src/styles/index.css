@@ -1,0 +1,306 @@
+/* ============================================================
+   ResearchPilot design tokens
+   Direction: a working scholar's desk, not a SaaS dashboard.
+   Paper-cream ground, library-indigo ink, amber marginalia for
+   the "annotation" moments (tags, citations, agent steps).
+   ============================================================ */
+:root {
+  --paper: #f7f3e9;
+  --paper-raised: #fffdf8;
+  --ink: #201d1a;
+  --ink-soft: #5a5650;
+  --rule: #ddd2b8;
+  --indigo: #33406f;
+  --indigo-deep: #232c4d;
+  --amber: #b5792c;
+  --amber-soft: #f0dfba;
+  --sage: #5f7a5b;
+  --danger: #9c4531;
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --radius: 3px;
+  --shadow-card: 0 1px 2px rgba(32, 29, 26, 0.06), 0 4px 14px rgba(32, 29, 26, 0.05);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+#root { min-height: 100vh; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--indigo-deep);
+  margin: 0 0 0.4em 0;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--indigo); }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  background: var(--indigo-deep);
+  color: #e9e5d8;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.sidebar .brand {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+.sidebar .brand small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--amber-soft);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+.sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar nav a {
+  color: #cfd0dd;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  border-left: 2px solid transparent;
+}
+.sidebar nav a:hover { background: rgba(255,255,255,0.06); }
+.sidebar nav a.active {
+  color: #fff;
+  border-left-color: var(--amber);
+  background: rgba(255,255,255,0.06);
+}
+
+/* --- Main content --- */
+.main {
+  padding: 34px 44px;
+  max-width: 980px;
+}
+
+.page-header { margin-bottom: 24px; }
+.page-header p { color: var(--ink-soft); margin: 6px 0 0 0; font-size: 14px; }
+
+/* --- Search --- */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.search-bar input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font-size: 14px;
+  color: var(--ink);
+}
+.search-bar input:focus {
+  outline: 2px solid var(--indigo);
+  outline-offset: 1px;
+}
+.search-bar button {
+  padding: 11px 18px;
+  background: var(--indigo);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+}
+.search-bar button:hover { background: var(--indigo-deep); }
+.search-bar button:disabled { opacity: 0.5; cursor: default; }
+
+/* --- Paper card with marginalia rail (signature element) --- */
+.paper-card {
+  display: grid;
+  grid-template-columns: 1fr 108px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.paper-card .body { padding: 16px 18px; }
+.paper-card .title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--indigo-deep);
+  margin: 0 0 6px 0;
+}
+.paper-card .meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.paper-card .abstract {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.paper-card .actions { margin-top: 10px; display: flex; gap: 8px; }
+.paper-card .actions button {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+}
+.paper-card .actions button.primary {
+  background: var(--indigo);
+  color: #fff;
+  border-color: var(--indigo);
+}
+.paper-card .actions button:hover { filter: brightness(0.97); }
+
+/* marginalia rail: hand-annotated feel */
+.marginalia {
+  border-left: 1px dashed var(--rule);
+  background: repeating-linear-gradient(
+    180deg, var(--paper) 0px, var(--paper) 27px, transparent 27px, transparent 28px
+  );
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+.marginalia .tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--amber);
+  background: var(--amber-soft);
+  padding: 2px 6px;
+  border-radius: 2px;
+  transform: rotate(-1deg);
+  white-space: nowrap;
+}
+.marginalia .status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--sage);
+  transform: rotate(-1deg);
+}
+
+/* --- Chat panel --- */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  height: 72vh;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.chat-bubble { max-width: 82%; padding: 10px 14px; border-radius: 8px; font-size: 14px; line-height: 1.55; }
+.chat-bubble.user { align-self: flex-end; background: var(--indigo); color: #fff; }
+.chat-bubble.assistant { align-self: flex-start; background: var(--paper); border: 1px solid var(--rule); }
+.chat-citations { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.chat-citations .cite {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--amber);
+  padding-left: 8px;
+}
+.chat-input-row { display: flex; gap: 8px; padding: 14px; border-top: 1px solid var(--rule); }
+.chat-input-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+.chat-input-row button {
+  padding: 10px 16px;
+  background: var(--indigo);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+/* --- Summary card --- */
+.summary-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 16px;
+}
+.summary-card h3 { font-size: 15px; margin-top: 14px; }
+.summary-card ul { margin: 6px 0; padding-left: 20px; }
+.style-tabs { display: flex; gap: 6px; margin-bottom: 4px; }
+.style-tabs button {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.style-tabs button.active { background: var(--indigo); color: #fff; border-color: var(--indigo); }
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-soft);
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.loading-dot::after {
+  content: "…";
+  animation: blink 1.2s infinite steps(3);
+}
+@keyframes blink { 0%, 20% { opacity: 0.2; } 50% { opacity: 1; } 100% { opacity: 0.2; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-dot::after { animation: none; content: "..."; }
+}
+
+@media (max-width: 780px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { flex-direction: row; overflow-x: auto; padding: 16px; }
+  .paper-card { grid-template-columns: 1fr; }
+  .marginalia { flex-direction: row; border-left: none; border-top: 1px dashed var(--rule); }
+}
